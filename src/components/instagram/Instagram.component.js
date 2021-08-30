@@ -13,7 +13,10 @@ function promiseFeed(){
 export class InstagramComponent extends ExcelComponent{
   static idName = 'instagram'
   constructor(selector){
-    super(selector)
+    super(selector, {
+      listeners: ['mouseover','mouseout']
+    })
+    this.block = null
   }
   async toHTML() {
     try {
@@ -22,5 +25,12 @@ export class InstagramComponent extends ExcelComponent{
     } catch (error) {
       console.log(error)
     }
+  }
+  onMouseover(event){
+    this.block = event.target.closest('[data-type="instablock"]')
+    this.block.classList.add('active')
+  }
+  onMouseout(){
+    this.block.classList.remove('active')
   }
 }
