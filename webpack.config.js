@@ -33,42 +33,72 @@ module.exports = {
   ],
   module: {
     rules: [
-    // {
-    //   test: /\.m?js$/,
-    //   exclude: /node_modules/,
-    //   use: {
-    //     loader: "babel-loader",
-    //     options: {
-    //       presets: ['@babel/preset-env']
-    //     }
-    //   }
-    // },
-    {
-      test: /\.s[ac]ss$/i,
-      use: [
-        'style-loader',
-        "css-loader",
-        'sass-loader',
-      ]
-    },
-    {
-      test: /\.css$/,
-      use: [
-        'style-loader',
-        'css-loader'
-      ]
-    },
-    {
-      test: /\.m?js$/,
-      exclude: /node_modules/,
-      // use: {
-      //   loader: "babel-loader",
-      //   options: {
-      //     presets: ['@babel/preset-env']
-      //   },
-      // }
-      use: jsLoaders(),
-    },
+      // {
+      //   test: /\.m?js$/,
+      //   exclude: /node_modules/,
+      //   use: {
+      //     loader: "babel-loader",
+      //     options: {
+      //       presets: ['@babel/preset-env']
+      //     }
+      //   }
+      // },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          "css-loader",
+          'sass-loader',
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: jsLoaders(),
+      },
+      // {
+      //   test: /\.(mov|mp4)$/,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: '[name].[ext]'
+      //       }
+      //     }
+      //   ]
+      // },
+      // {
+      //   test: /\.(png|jpe?g|gif)$/i,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //     },
+      //   ],
+      // },
+      {
+        test: /\.(jpg|png)$/,
+        use: {
+          loader: 'url-loader',
+        },
+      },
+      // {
+      //   test: /\.(jpe?g|png|gif|ico)$/i,
+      //   loader: 'file-loader',
+      //   use: {
+      //     name: ["[name].[hash:6].[ext]"],
+      //     outputPath: 'images',
+      //     publicPath: 'images',
+      //     emitFile: true,
+      //     esModule: false
+      //   }
+      // },
     ]
   },
   devServer: {

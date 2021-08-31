@@ -11,7 +11,6 @@ export class DomListener {
       }
   
       this[method] = this[method].bind(this)
-      console.log(method)
       this.$el.addEventListener(listener,this[method])
     })
   }

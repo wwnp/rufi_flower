@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="wrap">
+  <div class="wrap" id="app">
     <header id="header">
       <nav class="navbar navbar-expand-lg navbar-dark ">
         <a class="navbar-brand" href="#">RUFI_LAND</a>
@@ -25,7 +25,7 @@
               <a class="nav-link" href="#">Каталог <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Лента</a>
+              <a class="nav-link" data-type='tape' href="#">Лента</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Как приобрести</a>
@@ -37,33 +37,25 @@
         </div>
       </nav>
     </header>
-  
-    <section class="" id="carousel">
-      <div class="container pt-5">
-        <h1 class="heading">
-          <span>RUFI FLOWER</span>
-          <button class="btn btn-info" id="theme">Сменить тему</button>
-        </h1>
-  
-        <hr>
-  
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Счетчик: <span id="counter"></span></h5>
-            <button class="btn btn-primary" id="add">Добавить</button>
-            <button class="btn btn-danger" id="sub">Убрать</button>
-            <button class="btn btn-success" id="async">Async</button>
-          </div>
-        </div>
+
+
+    <div class="carousel ml-auto mr-auto" id="carousel">
+      <div class="carousel-myinner" data-type='carouselInner' id="carouselInner">
+
       </div>
-    </section>
+      <a href="#" class="car-arrow prev-arrow" data-arrow='prev' id="prev"><i class="fas fa-arrow-left"></i></a>
+      <a href="#" class="car-arrow next-arrow" data-arrow='next' id="next" ><i class="fas fa-arrow-right"></i></a>
+    </div>
 
     <section id="section_buy">Как приобрести</section>
     
     <section>
       <!-- <div class="container-fluid"> -->
+        
         <h2 class="text-center display-2">Лента Instagram</h2>
-        <div class="instagram" id="instagram"></div>
+        <div class="instagram" id="instagram">
+          <div class="loading hide" id="loading"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
       <!-- </div> -->
       
     </section>
@@ -84,6 +76,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
+  <script src="https://kit.fontawesome.com/f15b6a6c87.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

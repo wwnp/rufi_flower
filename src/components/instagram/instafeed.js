@@ -7,40 +7,40 @@ function assert(val, msg) {
 }
 
 export function Instafeed(options) {
-  assert(!options || typeof options === 'object', 'options must be an object, got ' + options + ' ('+ typeof options +')');
+  assert(!options || typeof options === 'object', 'options must be an object, got ' + options + ' (' + typeof options + ')');
 
   const opts = {
     accessToken: null,
     accessTokenTimeout: 10000,
-    after: ()=> {
-      const nodeBlocs = document.querySelectorAll('[data-type="instablock"]')
-      nodeBlocs.forEach( (el)=> {
-        console.log(el)
-        el.addEventListener('mousemove', (event)=>{
-          event.preventDefault()
-          console.log(123)
-        })
-      })
+    after: () => {
     },
     apiTimeout: 10000,
     apiLimit: null,
     before: null,
     debug: false,
-    error: null,
+    error: (err)=> {
+      const instagram = document.getElementById('instagram')
+      instagram.innerHTML += err
+    },
     filter: null,
-    limit: 6,
+    limit: 12,
     mock: false,
     render: null,
     sort: null,
-    success: ()=> {
+    success: () => {
     },
     target: 'instagram',
-    template: `<div class="block" data-type='instablock' ><a target="_blank" href="{{link}}"><img src="{{image}}" /></a></div>`,
+    template:`
+      <div class="block" data-type='instablock'>
+        <div class="block-modal"></div>
+        <a class='btn btn-sm btn-primary' target="_blank" href="{{link}}" ><i class="fab fa-instagram"></i></a>
+        <img src="{{image}}"/>
+      </div>
+    `,
     // template: `<div class="block" data-type='instablock' data-name="{{caption}}"><a target="_blank" href="{{link}}"><img title="{{caption}}" src="{{image}}" /></a></div>`,
-    templateBoundaries: ['{{','}}'],
+    templateBoundaries: ['{{', '}}'],
     transform: null
   };
-
   // state holder
   var state = {
     running: false,
@@ -60,24 +60,24 @@ export function Instafeed(options) {
   }
 
   // validate options
-  assert(typeof opts.target === 'string' || typeof opts.target === 'object', 'target must be a string or DOM node, got ' + opts.target + ' ('+ typeof opts.target +')');
-  assert(typeof opts.accessToken === 'string' || typeof opts.accessToken === 'function', 'accessToken must be a string or function, got ' + opts.accessToken + ' ('+ typeof opts.accessToken +')');
-  assert(typeof opts.accessTokenTimeout === 'number', 'accessTokenTimeout must be a number, got '+ opts.accessTokenTimeout + ' ('+ typeof opts.accessTokenTimeout +')');
-  assert(typeof opts.apiTimeout === 'number', 'apiTimeout must be a number, got '+ opts.apiTimeout + ' ('+ typeof opts.apiTimeout +')');
-  assert(typeof opts.debug === 'boolean', 'debug must be true or false, got ' + opts.debug + ' ('+ typeof opts.debug +')');
-  assert(typeof opts.mock === 'boolean', 'mock must be true or false, got ' + opts.mock + ' ('+ typeof opts.mock +')');
-  assert(typeof opts.templateBoundaries === 'object' && opts.templateBoundaries.length === 2 && typeof opts.templateBoundaries[0] === 'string' && typeof opts.templateBoundaries[1] === 'string', 'templateBoundaries must be an array of 2 strings, got ' + opts.templateBoundaries + ' ('+ typeof opts.templateBoundaries +')');
-  assert(!opts.template || typeof opts.template === 'string', 'template must null or string, got ' + opts.template + ' ('+ typeof opts.template +')');
-  assert(!opts.error || typeof opts.error === 'function', 'error must be null or function, got ' + opts.error + ' ('+ typeof opts.error +')');
-  assert(!opts.before || typeof opts.before === 'function', 'before must be null or function, got ' + opts.before + ' ('+ typeof opts.before +')');
-  assert(!opts.after || typeof opts.after === 'function', 'after must be null or function, got ' + opts.after + ' ('+ typeof opts.after +')');
-  assert(!opts.success || typeof opts.success === 'function', 'success must be null or function, got ' + opts.success + ' ('+ typeof opts.success +')');
-  assert(!opts.filter || typeof opts.filter === 'function', 'filter must be null or function, got ' + opts.filter + ' ('+ typeof opts.filter +')');
-  assert(!opts.transform || typeof opts.transform === 'function', 'transform must be null or function, got ' + opts.transform + ' ('+ typeof opts.transform +')');
-  assert(!opts.sort || typeof opts.sort === 'function', 'sort must be null or function, got ' + opts.sort + ' ('+ typeof opts.sort +')');
-  assert(!opts.render || typeof opts.render === 'function', 'render must be null or function, got ' + opts.render + ' ('+ typeof opts.render +')');
-  assert(!opts.limit || typeof opts.limit === 'number', 'limit must be null or number, got ' + opts.limit + ' ('+ typeof opts.limit +')');
-  assert(!opts.apiLimit || typeof opts.apiLimit === 'number', 'apiLimit must null or number, got ' + opts.apiLimit + ' ('+ typeof opts.apiLimit +')');
+  assert(typeof opts.target === 'string' || typeof opts.target === 'object', 'target must be a string or DOM node, got ' + opts.target + ' (' + typeof opts.target + ')');
+  assert(typeof opts.accessToken === 'string' || typeof opts.accessToken === 'function', 'accessToken must be a string or function, got ' + opts.accessToken + ' (' + typeof opts.accessToken + ')');
+  assert(typeof opts.accessTokenTimeout === 'number', 'accessTokenTimeout must be a number, got ' + opts.accessTokenTimeout + ' (' + typeof opts.accessTokenTimeout + ')');
+  assert(typeof opts.apiTimeout === 'number', 'apiTimeout must be a number, got ' + opts.apiTimeout + ' (' + typeof opts.apiTimeout + ')');
+  assert(typeof opts.debug === 'boolean', 'debug must be true or false, got ' + opts.debug + ' (' + typeof opts.debug + ')');
+  assert(typeof opts.mock === 'boolean', 'mock must be true or false, got ' + opts.mock + ' (' + typeof opts.mock + ')');
+  assert(typeof opts.templateBoundaries === 'object' && opts.templateBoundaries.length === 2 && typeof opts.templateBoundaries[0] === 'string' && typeof opts.templateBoundaries[1] === 'string', 'templateBoundaries must be an array of 2 strings, got ' + opts.templateBoundaries + ' (' + typeof opts.templateBoundaries + ')');
+  assert(!opts.template || typeof opts.template === 'string', 'template must null or string, got ' + opts.template + ' (' + typeof opts.template + ')');
+  assert(!opts.error || typeof opts.error === 'function', 'error must be null or function, got ' + opts.error + ' (' + typeof opts.error + ')');
+  assert(!opts.before || typeof opts.before === 'function', 'before must be null or function, got ' + opts.before + ' (' + typeof opts.before + ')');
+  assert(!opts.after || typeof opts.after === 'function', 'after must be null or function, got ' + opts.after + ' (' + typeof opts.after + ')');
+  assert(!opts.success || typeof opts.success === 'function', 'success must be null or function, got ' + opts.success + ' (' + typeof opts.success + ')');
+  assert(!opts.filter || typeof opts.filter === 'function', 'filter must be null or function, got ' + opts.filter + ' (' + typeof opts.filter + ')');
+  assert(!opts.transform || typeof opts.transform === 'function', 'transform must be null or function, got ' + opts.transform + ' (' + typeof opts.transform + ')');
+  assert(!opts.sort || typeof opts.sort === 'function', 'sort must be null or function, got ' + opts.sort + ' (' + typeof opts.sort + ')');
+  assert(!opts.render || typeof opts.render === 'function', 'render must be null or function, got ' + opts.render + ' (' + typeof opts.render + ')');
+  assert(!opts.limit || typeof opts.limit === 'number', 'limit must be null or number, got ' + opts.limit + ' (' + typeof opts.limit + ')');
+  assert(!opts.apiLimit || typeof opts.apiLimit === 'number', 'apiLimit must null or number, got ' + opts.apiLimit + ' (' + typeof opts.apiLimit + ')');
 
   // set instance info
   this._state = state;
@@ -211,7 +211,7 @@ Instafeed.prototype._showNext = function showNext(callback) {
     if (scope._state.paging && typeof scope._state.paging.next === 'string') {
       url = scope._state.paging.next;
     } else {
-      url = 'https://graph.instagram.com/me/media?fields=caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token='+ scope._state.token;
+      url = 'https://graph.instagram.com/me/media?fields=caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token=' + scope._state.token;
       if (!scope._options.apiLimit && typeof scope._options.limit === 'number') {
         scope._debug('showNext', 'no apiLimit set, falling back to limit', scope._options.apiLimit, scope._options.limit);
         url = url + '&limit=' + scope._options.limit;
@@ -457,7 +457,7 @@ Instafeed.prototype._basicRender = function basicRender(data) {
   var keyPath = null;
   var keyPathValue = null;
 
-  while((match = exp.exec(template)) !== null) {
+  while ((match = exp.exec(template)) !== null) {
     keyPath = match[1];
     substr = template.slice(lastIndex, match.index);
     output = output + substr;
@@ -482,7 +482,7 @@ Instafeed.prototype._valueForKeyPath = function valueForKeyPath(keyPath, data) {
   var key = null;
   var lastValue = data;
 
-  while((match = exp.exec(keyPath)) !== null) {
+  while ((match = exp.exec(keyPath)) !== null) {
     if (typeof lastValue !== 'object') {
       return null;
     }
@@ -613,7 +613,7 @@ Instafeed.prototype._debug = function debug() {
 
   if (this._options.debug && console && typeof console.log === 'function') {
     args = [].slice.call(arguments);
-    args[0] = '[Instafeed] ['+args[0]+']'; // first argument should be the callers name
+    args[0] = '[Instafeed] [' + args[0] + ']'; // first argument should be the callers name
     console.log.apply(null, args);
   }
 };

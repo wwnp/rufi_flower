@@ -2,11 +2,21 @@ export class MainPage {
   constructor(selector,options){
     this.$el = document.getElementById(selector)
     this.components = options.components
+    this.loading = options.loading
+    this.images = options.images
+
     this.getRoot()
   }
   getRoot(){
     this.components = this.components.map((Component)=>{
-      return Component = new Component(Component.idName)
+      switch (Component.idName) {
+        case 'header':
+          return Component = new Component(Component.idName)
+        case 'carousel':
+          return Component = new Component(Component.idName,this.images)
+        case 'instagram':
+          return Component = new Component(Component.idName,this.loading)
+      }
     })
   }
   render(){

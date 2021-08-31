@@ -1,9 +1,50 @@
+
+
 .instagram {
   display: flex;
   flex-wrap: wrap;
 }
 
 .block {
-  width: 33.333333333333333333333%;
-  // margin: 1%;
+  width: 16.66666666666666666666%;
+
+  position: relative;
+  z-index: 10;
+
+  transition: all ease .15s;
+
+  &.active {
+    .block-modal {
+      background: rgba(0,0,0,0);
+    }
+    a {
+      z-index: 2;
+    }
+  }
+  .block-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0,0,0,0.5);
+  }
+  & img {
+    pointer-events: none;
+  }
+  & a {
+    position: absolute;
+    bottom: 5%;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: -1;
+  }
+  &.button {
+    @include button(green);
+  }
+  & a i {
+    font-size: 32px;
+  }
 }
+
