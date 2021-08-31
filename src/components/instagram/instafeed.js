@@ -18,7 +18,10 @@ export function Instafeed(options) {
     apiLimit: null,
     before: null,
     debug: false,
-    error: null,
+    error: (err)=> {
+      const instagram = document.getElementById('instagram')
+      instagram.innerHTML += err
+    },
     filter: null,
     limit: 12,
     mock: false,
@@ -31,7 +34,6 @@ export function Instafeed(options) {
       <div class="block" data-type='instablock'>
         <div class="block-modal"></div>
         <a class='btn btn-sm btn-primary' target="_blank" href="{{link}}" ><i class="fab fa-instagram"></i></a>
-        
         <img src="{{image}}"/>
       </div>
     `,
@@ -39,7 +41,6 @@ export function Instafeed(options) {
     templateBoundaries: ['{{', '}}'],
     transform: null
   };
-  console.log(100/(opts.limit/2))
   // state holder
   var state = {
     running: false,

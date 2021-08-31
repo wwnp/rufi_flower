@@ -12,25 +12,41 @@ function promiseFeed(){
 
 export class InstagramComponent extends ExcelComponent{
   static idName = 'instagram'
-  constructor(selector){
+  constructor(selector,loading){
     super(selector, {
       listeners: ['mouseover','mouseout']
     })
     this.block = null
+    this.loading = loading
   }
   async toHTML() {
     try {
-     const feed =  await promiseFeed()   
-     feed.run() 
+      this.loading.show()
+      // await delay(3000)
+      const feed =  await promiseFeed()   
+      feed.run() 
+      this.loading.hide()
     } catch (error) {
       console.log(error)
     }
   }
   onMouseover(event){
     this.block = event.target.closest('[data-type="instablock"]')
-    this.block.classList.add('active')
+    if(this.block){
+      this.block.classList.add('active')
+    }
   }
   onMouseout(){
-    this.block.classList.remove('active')
+    if(this.block){
+      this.block.classList.remove('active')
+    }
   }
+}
+
+const delay = (ms)=> {
+  return new Promise((resolve)=> {
+    setTimeout(() => {
+      resolve()
+    }, ms);
+  })
 }
