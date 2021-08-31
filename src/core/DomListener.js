@@ -9,7 +9,6 @@ export class DomListener {
       if(!this[method]){
         throw new Error(`Method ${method} in ${this.name} not exist`)
       }
-  
       this[method] = this[method].bind(this)
       this.$el.addEventListener(listener,this[method])
     })
