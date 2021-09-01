@@ -1,60 +1,100 @@
+// .carousel {
+//   position: relative;
+//   height: 650px;
+//   width: 100%;
+
+//   overflow: hidden;
+//   // background-image: url('../images/car1.jpg');
+//   background-size: cover;
+//   background-position: center;
+
+//   & .carousel-myinner {
+//     height: 100%;
+//     width: 300%;
+
+//     display: flex;
+
+//     position: relative;
+
+//     // overflow: hidden;
+
+//     // background-color: rgb(37, 37, 37);
+
+//     & .carousel-myitem {
+//       width: 100%;
+//       height: 100%;
+
+//       // position: absolute;
+//       // top: 0;
+//       // left: 0;
+
+//       background-size: cover;
+
+//       & img {
+//         height: 100%;
+//       }
+
+//       & .active {
+//         margin-right: 10px;
+//       }
+//     }
+//   }
+
+//   & .car-arrow {
+//     position: absolute;
+//     top: 50%;
+
+//     & i {
+//       pointer-events: none;
+//       font-size: $main_font*2;
+//     }
+//   }
+
+//   & .prev-arrow {
+//     left: 1.5%;
+//   }
+
+//   & .next-arrow {
+//     right: 1.5%;
+//   }
+// }
 .carousel {
-  position: relative;
-  height: 650px;
-  width: 100%;
-
+  height: 500px;
   overflow: hidden;
-  // background-image: url('../images/car1.jpg');
-  background-size: cover;
-  background-position: center;
+}
 
-  & .carousel-myinner {
-    height: 100%;
-    width: 300%;
+.carousel-inner {
+  height: 100%;
+}
 
-    display: flex;
+.carousel-item {
+  height: 100%;
+}
 
-    position: relative;
+.carousel-item img {
+  height: 100%;
+}
 
-    // overflow: hidden;
+.carousel-caption {
+  right: 0;
+  bottom: 0;
 
-    // background-color: rgb(37, 37, 37);
-
-    & .carousel-myitem {
-      width: 100%;
-      height: 100%;
-
-      // position: absolute;
-      // top: 0;
-      // left: 0;
-
-      background-size: cover;
-
-      & img {
-        height: 100%;
-      }
-
-      & .active {
-        margin-right: 10px;
-      }
-    }
+  & h5 {
+    font-size: $main_font*2;
   }
+}
 
-  & .car-arrow {
-    position: absolute;
-    top: 50%;
+.carousel-first {
+  top: 40%;
+  left: -30%;
+}
 
-    & i {
-      pointer-events: none;
-      font-size: $main_font*2;
-    }
-  }
+.carousel-second {
+  top: 40%;
+  left: -30%;
+}
 
-  & .prev-arrow {
-    left: 1.5%;
-  }
-
-  & .next-arrow {
-    right: 1.5%;
-  }
+.carousel-third {
+  top: 40%;
+  left: -30%;
 }

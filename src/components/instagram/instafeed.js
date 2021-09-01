@@ -33,7 +33,7 @@ export function Instafeed(options) {
     template:`
       <div class="block" data-type='instablock'>
         <div class="block-modal"></div>
-        <a class='btn btn-sm btn-primary' target="_blank" href="{{link}}" ><i class="fab fa-instagram"></i></a>
+        <a class='button' target="_blank" href="{{link}}" ><i class="fab fa-instagram"></i></a>
         <img src="{{image}}"/>
       </div>
     `,
