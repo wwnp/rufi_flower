@@ -4,6 +4,7 @@ export class MainPage {
     this.components = options.components
     this.loading = options.loading
     this.images = options.images
+    this.backgrounds = options.backgrounds
     this.captions = options.captions
 
     this.getRoot()
@@ -14,7 +15,7 @@ export class MainPage {
         case 'header':
           return Component = new Component(Component.idName)
         case 'carousel':
-          return Component = new Component(Component.idName,this.images,this.captions)
+          return Component = new Component(Component.idName,this.backgrounds,this.images,this.captions)
         case 'instagram':
           return Component = new Component(Component.idName,this.loading)
       }

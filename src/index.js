@@ -1,21 +1,28 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/style.scss'
 import { HeaderComponent } from './components/header/header.component';
-import { CarouselComponent } from './components/caruosel/Carousel.component';
+import { CarouselComponent } from './components/carousel/Carousel.component';
 import { InstagramComponent } from './components/instagram/instagram.component';
 import { MainPage } from './components/main/mainPage';
 import { Loading } from './components/loader/loading';
 
-import image1 from './/images/car1.jpg';
-import image2 from './/images/car2.jpg';
-import image3 from './/images/car3.jpg';
+import background1 from './images/car1.jpg';
+import background2 from './images/car2.jpg';
+import background3 from './images/car3.jpg';
+
+import image1 from './images/delivery.png';
 
 const loading = new Loading('loading')
 
 const main = new MainPage('app', {
   components: [HeaderComponent, CarouselComponent, InstagramComponent],
   loading,
-  images: [image1, image2, image3],
+  backgrounds: [background1, background2, background3],
+  images: {
+    0: image1,
+    1: '',
+    2: ''
+  },
   captions: {
     0: {
       header: 'Собственное производство',

@@ -1,0 +1,55 @@
+.buy-inner {
+  display: flex;
+  justify-content: space-between;
+  
+}
+.buy-item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  height: 275px;
+  padding: $main_font*1.3;
+  
+  box-shadow: 1px 2px 3px rgb(255, 255, 255);
+  background-color: white;
+  border-radius: 5%;
+  & .buy-links {
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  & h4 {
+    color: $buy-color;
+  }
+
+  & .buy-descr span {
+    color: $buy-color;
+  }
+  & .buy-descr address {
+    color: $buy-color;
+  }
+  & .buy-links button {
+    color: $white;
+  }
+  & .buy-links a {
+    color: $white;
+  }
+
+}
+.whatsapp-link {
+  padding: 7.5px;
+
+  vertical-align: middle;
+}
+
+.whatsapp-link i {
+
+  font-size: $main_font*3;
+  color: green;
+  transition: all ease .1s;
+  border-radius: 10%;
+}
+.whatsapp-link i:hover {
+  color: darkgreen;
+}
