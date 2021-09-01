@@ -1,18 +1,20 @@
 @mixin button($color:green) {
-  height: 24px;
-  min-width: 24px;
-  padding: 7px;
+  // height: 24px;
+  // min-width: 24px;
+  padding: 10px;
 
   text-align: center;
 
   display: block;
 
-
-  color: rgba(0,0,0,0.7);
+  border-radius: 50%;
+  background: #d6249f;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+  box-shadow: 0px 3px 10px rgba(0,0,0,.25);
 
   & i {
     pointer-events: none;
-    font-size: 16px;
+    font-size: 30px;
   }
 
   &:active, &.active {
@@ -20,7 +22,6 @@
   }
 
   &:hover {
-    background-color: #eee;
     cursor: pointer;
   }
 }
