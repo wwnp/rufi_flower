@@ -16,7 +16,21 @@ footer {
 }
 body {
   font-size: $main_font;
+
+  @media (min-width:576px) {
+    font-size:$main_font_sm;
+  }
+  @media (min-width:768px) {
+    font-size:$main_font_md;
+  }
+  @media (min-width:992px) {
+    font-size:$main_font_lg;
+  }
+  @media (min-width:1200px) {
+    font-size:$main_font_xl;
+  }
 }
+
 header {
   position: fixed;
   top: 0;

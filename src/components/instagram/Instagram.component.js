@@ -6,6 +6,7 @@ function promiseFeed(){
     var feed = new Instafeed({
       accessToken: 'IGQVJWX2Rhc291RnNfWTYteTJOc2ZAsY1QxZAjlZAZAXpCTmdiRk5mQWluV284c0RlQmtWN0lTZAVE0UUQwYUdXc19EZAVhQWHhJNnNGeUFTT1RGcTExTkN3a1pBNHRCbENKUDRpUklFZAmhfSzlpdUhnVXNuTgZDZD'
     });
+    feed.run()
     resolve(feed)
   })
 }
@@ -23,14 +24,18 @@ export class InstagramComponent extends ExcelComponent{
     try {
       this.loading.show()
       // await delay(3000)
-      const feed =  await promiseFeed()   
-      feed.run() 
-      this.loading.hide()
+      var feed = new Instafeed({
+        accessToken: 'IGQVJWX2Rhc291RnNfWTYteTJOc2ZAsY1QxZAjlZAZAXpCTmdiRk5mQWluV284c0RlQmtWN0lTZAVE0UUQwYUdXc19EZAVhQWHhJNnNGeUFTT1RGcTExTkN3a1pBNHRCbENKUDRpUklFZAmhfSzlpdUhnVXNuTgZDZD'
+      });
+      feed.run()
+      
+      // this.loading.hide()
     } catch (error) {
       console.log(error)
     }
   }
   onMouseover(event){
+    console.log(event.target)
     this.block = event.target.closest('[data-type="instablock"]')
     if(this.block){
       this.block.classList.add('active')

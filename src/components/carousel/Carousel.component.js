@@ -13,31 +13,30 @@ export class CarouselComponent extends ExcelComponent {
     this.images = images
     this.captions = captions
 
-    console.log(this.images)
   }
   init() {
     super.init()
     const carouselInner = this.$el.querySelector('[data-type="carousel"]')
     this.backgrounds = this.backgrounds.map((background, index) => {
-      return this.renderItemCarousel(background, index, this.captions[index], this.images[index] ? this.images[index] : null)
+      return this.renderItemCarousel(background, index, this.captions[index], this.images[index])
     })
     carouselInner.innerHTML = this.backgrounds.join('')
   }
-
-  renderItemCarousel(background, index, captions) {
+  renderItemCarousel(background, index, captions, imgSrc) {
     let temp = ''
-    let image
+    const image = imgSrc === null
+      ? ''
+      : `<img class='delivery-img' src='${imgSrc}'>`
+
     switch (index) {
       case 0:
         temp = 'carousel-first'
-        image = `<img class='delivery-img' src=''>`
         break;
       case 1:
         temp = 'carousel-second'
         break;
       case 2:
         temp = 'carousel-third'
-
         break;
       default:
         temp = ''

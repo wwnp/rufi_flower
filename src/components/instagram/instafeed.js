@@ -13,6 +13,7 @@ export function Instafeed(options) {
     accessToken: null,
     accessTokenTimeout: 10000,
     after: () => {
+
     },
     apiTimeout: 10000,
     apiLimit: null,
@@ -21,6 +22,9 @@ export function Instafeed(options) {
     error: (err)=> {
       const instagram = document.getElementById('instagram')
       instagram.innerHTML += err
+
+      const loading = document.getElementById('loading')
+      loading.classList.add('hide')
     },
     filter: null,
     limit: 12,
@@ -28,6 +32,8 @@ export function Instafeed(options) {
     render: null,
     sort: null,
     success: () => {
+      const loading = document.getElementById('loading')
+      loading.classList.add('hide')
     },
     target: 'instagram',
     template:`
@@ -37,7 +43,6 @@ export function Instafeed(options) {
         <img src="{{image}}"/>
       </div>
     `,
-    // template: `<div class="block" data-type='instablock' data-name="{{caption}}"><a target="_blank" href="{{link}}"><img title="{{caption}}" src="{{image}}" /></a></div>`,
     templateBoundaries: ['{{', '}}'],
     transform: null
   };
@@ -631,4 +636,3 @@ Instafeed.prototype._runHook = function runHook(hookName, data) {
   return success;
 };
 
-export default Instafeed;

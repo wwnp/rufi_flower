@@ -9,10 +9,8 @@
 
 .carousel-item {
   height: 100%;
-}
 
-.carousel-item img {
-  height: 100%;
+  overflow: hidden;
 }
 
 .carousel-caption {
@@ -40,6 +38,8 @@
 }
 
 .delivery-img {
-  width: 300px;
-  height: 150px;
+  width: 250px;
+  height: 125px;
+
+  overflow: hidden;
 }

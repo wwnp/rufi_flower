@@ -20,8 +20,8 @@ const main = new MainPage('app', {
   backgrounds: [background1, background2, background3],
   images: {
     0: image1,
-    1: '',
-    2: ''
+    1: null,
+    2: null
   },
   captions: {
     0: {
